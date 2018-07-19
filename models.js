@@ -1,3 +1,8 @@
+
+
+
+
+// This is a route
 app.post('/signup', function(req, res) {
     const user = models.user.build({
         name: req.body.name,
@@ -15,3 +20,4 @@ app.post('/signup', function(req, res) {
         console.log(req.session);
     })
 });
+
