@@ -1,9 +1,9 @@
-var Event = sequelize.define("event", {
-    eventName: Sequelize.STRING,
-    eventDate: Sequelize.STRING,
-    participant: Sequelize.STRING
-});
+// var Event = sequelize.define("event", {
+//     eventName: Sequelize.STRING,
+//     eventDate: Sequelize.STRING,
+//     participant: Sequelize.STRING
+// });
 
-Event.sync();
+// Event.sync();
 
-module.exports = Event;
+// module.exports = Event;
