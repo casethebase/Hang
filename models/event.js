@@ -1,9 +1,8 @@
-var Event = sequelize.define("event", {
-    eventName: Sequelize.STRING,
-    eventDate: Sequelize.STRING,
-    participant: Sequelize.STRING
+module.exports = function(sequelize, DataTypes)  {
+var Event = sequelize.define("Event", {
+    eventName: DataTypes.STRING,
+    eventDate: DataTypes.STRING,
+    participant: DataTypes.STRING
 });
-
-Event.sync();
-
-module.exports = Event;
+return Event;
+};
