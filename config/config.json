@@ -3,9 +3,10 @@
     "username": "root",
     "password": "root",
     "database": "hangDB",
-    "host": "127.0.0.1",
+    "host": "localhost",
+    "port": 8880,
     "dialect": "mysql",
-    "port": 8889
+    "operatorsAliases": "false"
   },
   
   "test": {
@@ -16,10 +17,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }

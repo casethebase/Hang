@@ -11,7 +11,11 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 
+<<<<<<< HEAD
 // require("./routes/api-routes.js")(app);
+=======
+require("./routes/api-routes.js")(app);
+>>>>>>> ac2433d65d5097811d91cc9452e18996e91cd42e
 // require("./routes/html-routes.js")(app);
 
 db.sequelize.sync().then(function() {
