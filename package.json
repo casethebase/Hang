@@ -1,4 +1,24 @@
 {
+  "name": "post-author-association",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.38.0"
+  }
+=======
   "name": "hang",
   "version": "1.0.0",
   "description": "## Overview This app allows friends to create profiles and link up to other friends, perhaps by way of facebook or twitter / gmail etc.",
