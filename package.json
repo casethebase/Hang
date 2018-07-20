@@ -4,8 +4,14 @@
   "description": "## Overview This app allows friends to create profiles and link up to other friends, perhaps by way of facebook or twitter / gmail etc.",
   "main": "models.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "materialize-css": "^1.0.0-rc.2"
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11",
+    "materialize-css": "^1.0.0-rc.2",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {},
   "scripts": {
