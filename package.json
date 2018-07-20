@@ -1,0 +1,24 @@
+{
+  "name": "hang",
+  "version": "1.0.0",
+  "description": "## Overview This app allows friends to create profiles and link up to other friends, perhaps by way of facebook or twitter / gmail etc.",
+  "main": "models.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "materialize-css": "^1.0.0-rc.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/casethebase/hang.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/casethebase/hang/issues"
+  },
+  "homepage": "https://github.com/casethebase/hang#readme"
+}
