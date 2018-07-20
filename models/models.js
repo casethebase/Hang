@@ -1,7 +1,3 @@
-
-
-
-
 // This is a route
 app.post('/signup', function(req, res) {
     const user = models.user.build({
