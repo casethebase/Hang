@@ -1,6 +1,6 @@
 const express = require('express');
 const parseurl = require('parseurl');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-pffarser');
 const path = require('path');
 const expressValidator = require('express-validator');
 const mustacheExpress = require('mustache-express');

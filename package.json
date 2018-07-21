@@ -1,21 +1,21 @@
 {
-  "name": "week-6-project-gabble",
+  "name": "Hang",
   "version": "1.0.0",
-  "description": "This is a social network for students.  This network, called \"Gabble\", has users, public messages and likes.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ethanjarrell/gabble.git"
+    "url": "git+https://github.com/casethebase/hang.git"
   },
-  "author": "Ethan Jarrell",
+  "author": "Casey Trahan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ethanjarrell/gabble/issues"
+    "url": "https://github.com/casethebase/hang/issues"
   },
-  "homepage": "https://github.com/ethanjarrell/gabble#readme",
+  "homepage": "https://github.com/casethebase/hang#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.16.3",
