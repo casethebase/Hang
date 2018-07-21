@@ -5,6 +5,7 @@ USE hangdb;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
+    id int NOT NULL,
 	userID int NOT NULL AUTO_INCREMENT,
 	username varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
