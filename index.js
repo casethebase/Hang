@@ -144,8 +144,8 @@ app.get('/newhang', function(req, res) {
 
 app.post('/home', function(req, res) {
   const post = models.post.build({
-    title: req.body.gabtitle = req.session.post,
-    body: req.body.gabbody = req.session.post,
+    title: req.body.hangtitle = req.session.post,
+    body: req.body.hangbody = req.session.post,
   });
   console.log(req.session.post);
 
