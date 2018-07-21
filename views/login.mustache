@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Hang Login</title>
+  <link rel="stylesheet" href="loginstyles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+</head>
+
+<body>
+  <div class="bodywrapper">
+
+    <div class="welcome">
+      <section class="headerwrapper">
+        <div>Welcome to</div>
+        <div class="Hang">Hang</div>
+      </section>
+      <section class="buttonwrapper">
+        <div class="signup">
+          <h1>Not a member?</h1>
+          <h2><a href="/signup">sign up</a></h2>
+        </div>
+        <div class="login">
+          <h1>Already a member?</h1>
+          <h2><a href="/login">log in</a></h2>
+        </div>
+      </section>
+    </div>
+
+    <form action="/login" method="post">
+      <h1>Log in</h1>
+      <fieldset>
+        <label for="username">Username</label>
+        <input autocomplete="off" type="text" name="username" placeholder="username">
+        <label for="password">Password</label>
+        <input autocomplete="off" type="password" name="password" placeholder="password">
+        <div class="form__submit-button">
+          <input type="submit">
+        </div>
+      </fieldset>
+    </form>
+
+  </div>
+</body>
+
+</html>

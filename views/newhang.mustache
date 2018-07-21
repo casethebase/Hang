@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Create a hang</title>
+  <link rel="stylesheet" href="newhangstyles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+</head>
+
+<body>
+  <div class="navbar">
+    <span><a href="./home">home</a></span><span><a href="./newhang">new hang</a></span><span><a href="./liked">Likes</a></span><span>logged in as {{#name}}{{.}}{{/name}}</span><span><a href="/logout">log out</a></span>
+  </div>
+  <div class="bodywrapper">
+    <form action="/newhang" method="post">
+      <div>
+        <h3>Welcome, {{#name}}{{.}}{{/name}}</h3>
+
+      </div>
+      <h1 class="h1">Create a new hang</h1>
+      <fieldset>
+        <div class="labelwrap">
+          <input class="hangtitle" type="text" name="hangtitle" placeholder="hang Title">
+          <textarea class="hangbody" type="text" name="hangbody" placeholder="Write your hang here"></textarea>
+        </div>
+        <div class="form__submit-button">
+          <input type="submit">
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</body>
+
+</html>
