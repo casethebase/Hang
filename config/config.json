@@ -4,7 +4,7 @@
     "password": "root",
     "database": "hangDB",
     "host": "localhost",
-    "port": 8880,
+    "port": 8889,
     "dialect": "mysql",
     "operatorsAliases": "false"
   },
