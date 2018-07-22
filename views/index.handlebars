@@ -1,37 +1,40 @@
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1>Welcome to hang</h1>
+            <h2>Hello <span id="userName"><b></b></span></h2>
+            <h4>Here's all the hangs you created:<br></h4>
+            <hr>
+            <ul>
+                {{#each hangs}}
+                    <div>
+                        <p><b>{{hangName}}</b></p>
+                        <p>{{aboutHang}}</p>
+                    </div>
+                    <hr>
+                {{/each}}
+            </ul>
 
-        <nav>
+            <button id="logOut-btn" class="btn btn-primary">Log out</button>
+        </div>
+        <div class="col-md-4">
+            <h3>Add a new hang:</h3>
+            <form id="createHang">
+                <div class="form-group">
+                    <label for="hang-name">Hang Name:</label>
+                    <input type="text" class="form-control" id="hang-name"  placeholder="New hang name">
+                </div>
+                <div class="form-group">
+                    <label for="about-hang">What is this hang for?</label>
+                    <textarea id="about-hang" class="form-control"  placeholder=""></textarea>
+                </div>
+                <button id="addHang" type="submit" class="btn btn-primary">Add</button>
 
-            <div class="nav-wrapper white">
-                <a href="#!" class="brand-logo center blue-text">LinkUP</a>
-                <ul class="right hide-on-med-and-down">
-                  <li><a href="sass.html">Sass</a></li>
-                  
-                </ul>
-            </div>
-        </nav>
+            </form>
+        </div>
+    </div>
+</div>
 
 
-        <ul id="slide-out" class="sidenav">
-            <li><div class="user-view">
-                <div class="background">
-                <img src="../Project2/alex-perez-580371-unsplash.jpg">
-                  </div>
-                <a href="#user"><img class="circle" src=""></a>
-                <a href="#name"><span class="white-text name">John Doe</span></a>
-                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                </div></li>
-                <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-                <li><a href="#!">Second Link</a></li>
-                <li><div class="divider"></div></li>
-        </ul>
-
-    <script type="text/javascript" src="public/js/materialize.min.js"></script>
-    <script type="text/javascript">
-    
-        $(document).ready(function(){
-            $('.sidenav').sidenav();
-        });
-
-    </script>
+<script type="text/javascript" src="/js/index.js"> </script>
 
