@@ -3,10 +3,9 @@
     "username": "root",
     "password": "root",
     "database": "hangDB",
-    "host": "localhost",
-    "port": 8880,
+    "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": "false"
+    "port": 8889
   },
   
   "test": {
