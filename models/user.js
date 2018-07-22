@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
         username: DataTypes.STRING,
         password: DataTypes.STRING,
     });
-    User.sync({force: true})
+    User.sync({force: false})
     return User;
 
     };

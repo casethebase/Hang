@@ -3,5 +3,6 @@ module.exports = function(sequelize, DataTypes) {
     eventName: DataTypes.STRING,
     members: DataTypes.STRING
   }, {});
+  Hang.sync({force: false})
   return Hang;
 };
