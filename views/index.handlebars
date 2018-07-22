@@ -3,13 +3,15 @@
         <div class="col-md-8">
             <h1>Welcome to hang</h1>
             <h2>Hello <span id="userName"><b></b></span></h2>
-            <h4>Here's all the hangs you created:</h4>
+            <h4>Here's all the hangs you created:<br></h4>
+            <hr>
             <ul>
                 {{#each hangs}}
                     <div>
                         <p><b>{{hangName}}</b></p>
                         <p>{{aboutHang}}</p>
                     </div>
+                    <hr>
                 {{/each}}
             </ul>
 
