@@ -8,7 +8,7 @@ $("#signup-submit").on("click", function(){
     };
     $.post("/api/signup", userInfo, function(result) {
         console.log(result)
-        window.location.href = "/";
+        window.location.href = "/login";
 
       });
 })

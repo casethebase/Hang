@@ -9,7 +9,6 @@ module.exports = function(app) {
             email: req.body.email,
             username: req.body.username,
             password: req.body.password,
-    
         }
         console.log(req.body);
         db.User.create(user).then(function(dbUser){
@@ -31,6 +30,13 @@ module.exports = function(app) {
     
     });
 
+    app.post("/api/hangs", function(req,res){
+        var newHang = req.body;
+        db.Hang.create(newHang).then(function(dbHang){
+            res.json(dbHang)
+        })
+    });
+
     app.get("/api/user/:id", function(req,res){
         var id = req.params.id;
         db.User.findOne({where:{id:id}}).then(function(dbUser){
@@ -38,10 +44,7 @@ module.exports = function(app) {
         })
     });
 
-    app.get("/api/hangs/:id", function(req,res){
-        var userId = req.params.id;
-        //todo: get all hangs related to the user
-    });
+
 
     //this is just for testing
     app.get("/api/users", function(req, res) {

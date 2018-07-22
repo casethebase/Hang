@@ -3,11 +3,36 @@
         <div class="col-md-8">
             <h1>Welcome to hang</h1>
             <h2>Hello <span id="userName"><b></b></span></h2>
-            <button id="logOut-btn" class="btn">Log out</button>
+            <h4>Here's all the hangs you created:</h4>
+            <ul>
+                {{#each hangs}}
+                    <div>
+                        <p><b>{{hangName}}</b></p>
+                        <p>{{aboutHang}}</p>
+                    </div>
+                {{/each}}
+            </ul>
+
+            <button id="logOut-btn" class="btn btn-primary">Log out</button>
+        </div>
+        <div class="col-md-4">
+            <h3>Add a new hang:</h3>
+            <form id="createHang">
+                <div class="form-group">
+                    <label for="hang-name">Hang Name:</label>
+                    <input type="text" class="form-control" id="hang-name"  placeholder="New hang name">
+                </div>
+                <div class="form-group">
+                    <label for="about-hang">What is this hang for?</label>
+                    <textarea id="about-hang" class="form-control"  placeholder=""></textarea>
+                </div>
+                <button id="addHang" type="submit" class="btn btn-primary">Add</button>
+
+            </form>
         </div>
     </div>
 </div>
 
 
-<script type="text/javascript" src="js/index.js"> </script>
+<script type="text/javascript" src="/js/index.js"> </script>
 

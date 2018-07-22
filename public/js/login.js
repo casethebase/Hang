@@ -1,3 +1,5 @@
+var userId = sessionStorage.getItem("userId");
+
 $("#submitBtn").on("click", function(){
     event.preventDefault();
     var loginInfo = {
@@ -5,19 +7,19 @@ $("#submitBtn").on("click", function(){
         password: $("#login-pass").val().trim()
     };
     $.post("/api/login", loginInfo, function(result) {
-        if (result === "404"){
+        if (!result){
             alert("incorrect user/pass")
         }else{
             sessionStorage.setItem("userId", result.id);
+            sessionStorage.setItem("userName", result.username);
             alert("Login successful")
-            window.location.href = "/index";
+            window.location.href = "/dashboard/"+result.id;
         }
       });
 
 })
 
 function getSession(){
-    var userId = sessionStorage.getItem("userId");
     if (userId){
         return userId;
     }else{
@@ -26,5 +28,5 @@ function getSession(){
 }
 
 if (getSession()){
-    window.location.href = "/index";
+    window.location.href = "/dashboard/"+userId;
 }
