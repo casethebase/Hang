@@ -56,9 +56,20 @@
 
             </form>
         </div>
+        <div class="col-md-4">
+              <button id="authorize_button" style="display: none;">Authorize</button>
+    <button id="signout_button" style="display: none;">Sign Out</button>
+
+    <pre id="content"></pre>
     </div>
+    </div>
+
 </div>
 
 
 <script type="text/javascript" src="/js/index.js"> </script>
+<script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
 
