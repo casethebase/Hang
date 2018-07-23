@@ -3,8 +3,10 @@ module.exports = function(sequelize, DataTypes) {
     hangName: DataTypes.STRING,
     aboutHang: DataTypes.STRING,
     creatorId: DataTypes.STRING,
-    members: DataTypes.STRING
+    members: DataTypes.STRING,
+    pending_members: DataTypes.STRING
   }, {});
   Hang.sync({force: false})
   return Hang;
 };
+

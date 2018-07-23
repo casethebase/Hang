@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         email: DataTypes.STRING,
         username: DataTypes.STRING,
         password: DataTypes.STRING,
+        notification: DataTypes.BOOLEAN
     });
     User.sync({force: false})
     return User;
