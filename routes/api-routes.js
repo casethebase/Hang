@@ -37,6 +37,13 @@ module.exports = function(app) {
         })
     });
 
+    app.post("/api/event", function(req,res){
+        var newEvent = req.body;
+        db.Calendar.create(newEvent).then(function(dbCalendar){
+            res.json(dbCalendar);
+        })
+    });
+
     app.get("/api/user/:id", function(req,res){
         var id = req.params.id;
         db.User.findOne({where:{id:id}}).then(function(dbUser){

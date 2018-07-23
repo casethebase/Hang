@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     aboutHang: DataTypes.STRING,
     creatorId: DataTypes.STRING,
     members: DataTypes.STRING,
-    notification: DataTypes.BOOLEAN
+    pending_members: DataTypes.STRING,
   }, {});
 
   Hang.sync({force: true})
