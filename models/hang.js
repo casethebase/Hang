@@ -5,14 +5,18 @@ module.exports = function(sequelize, DataTypes) {
     creatorId: DataTypes.STRING,
     members: DataTypes.STRING,
     notification: DataTypes.BOOLEAN
-  }, {});
-  // Hang.associate = function(models){
-  //   Hang.belongsTo(models.User, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   })
-  // }
-  // Hang.sync({force: true})
+  },{
+    classMethods: {
+      associate: function(models){
+        Hang.belongsTo(models.User, {
+          onDelete: "cascade",
+          foreignKey:{
+            allowNull: false
+          }
+        })
+      }
+    }
+  });
+  Hang.sync({force: true})
   return Hang;
 };
