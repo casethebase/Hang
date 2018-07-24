@@ -179,6 +179,8 @@ $("#addHang").on("click", function(){
     var newHang = {
         hangName: $("#hang-name").val().trim(),
         aboutHang: $("#about-hang").val().trim(),
+        hangDate: $("#hang-date").val().trim(),
+        hangTime: $("#hang-time").val().trim(),
         creatorId: userId
     }
     $.post("/api/hangs", newHang, function(result){

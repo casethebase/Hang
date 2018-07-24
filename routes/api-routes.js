@@ -37,6 +37,12 @@ module.exports = function(app) {
         })
     });
 
+    // app.post("/api/hangs", function(req,res){
+    //     var hangTime = req.body.hangTime;
+    //     var hangDay = req.body.hangDate;
+   
+    // });
+
     app.post("/api/event", function(req,res){
         var newEvent = req.body;
         db.Calendar.create(newEvent).then(function(dbCalendar){
