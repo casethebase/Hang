@@ -12,10 +12,10 @@ body {
 
 
 .wrap {
-    margin-top: 7%;
+    margin-top: 3%;
     width: 30%;
     float: left;
-    margin-left: 5%;
+    margin-left: 7%;
 }
 
 .people-hang {
@@ -91,13 +91,19 @@ body {
 }
 
 .wrap-container {
-    margin-top: -30%;
-    width: 40%;
-    float: right;
+    width: 50%;
+    float: left;
 }
 
 #hello-there {
     padding: 1%;
+    font-size: 20px;
+    padding: 1%;
     list-style-type: none;
-    color: black;
+    color: #E8A828;
+}
+
+#logOut-btn {
+   margin-bottom: 2%;
+   margin-top: 2%;
 }
