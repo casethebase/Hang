@@ -8,3 +8,5 @@ module.exports = function(sequelize, DataTypes) {
   Hang.sync({force: false})
   return Hang;
 };
+
+
