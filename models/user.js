@@ -4,17 +4,13 @@ module.exports = function(sequelize, DataTypes) {
         email: DataTypes.STRING,
         username: DataTypes.STRING,
         password: DataTypes.STRING,
-    }, {
-        classMethods: {
-            associate: function(models){
-                User.hasmany(models.Hang);
-            }
-        }
-
     });
-    
 
-    User.sync({force: true})
+    User.associate = function(models) {
+        User.hasMany(models.Hang, {
+          onDelete: "cascade"
+        });
+      };
     return User;
 
     };

@@ -14,7 +14,7 @@ module.exports = function(app) {
 
     app.get("/dashboard/:userId", function(req,res){
         var userId = req.params.userId;
-        db.Hang.findAll({where:{creatorId:userId}}).then(function(dbHangs){
+        db.Hang.findAll({where:{UserId:userId}}).then(function(dbHangs){
             res.render("index", {hangs:dbHangs});
         })
     });

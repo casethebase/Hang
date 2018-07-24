@@ -19,11 +19,6 @@ $.get("/api/user/"+userId, function(result){
     $("#userName").text(result.name)
 });
 
-// $.get("/api/hangs/"+userId, function(result){
-//     console.log("this"),
-//     document.write(result)
-// })
-
 
 $("#logOut-btn").on("click", function(){
     sessionStorage.clear();
@@ -35,7 +30,7 @@ $("#addHang").on("click", function(){
     var newHang = {
         hangName: $("#hang-name").val().trim(),
         aboutHang: $("#about-hang").val().trim(),
-        creatorId: userId
+        UserId: userId
     }
     $.post("/api/hangs", newHang, function(result){
         console.log(result)
