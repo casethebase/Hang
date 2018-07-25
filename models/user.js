@@ -7,16 +7,11 @@ module.exports = function(sequelize, DataTypes) {
         notification: DataTypes.BOOLEAN
     });
 
-<<<<<<< HEAD
-
-    User.sync({force: true})
-=======
     User.associate = function(models) {
         User.hasMany(models.Hang, {
           onDelete: "cascade"
         });
       };
->>>>>>> em
     return User;
 
     };
