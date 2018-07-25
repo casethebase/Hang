@@ -6,7 +6,6 @@ module.exports = function(sequelize, DataTypes) {
         timeEnd: DataTypes.STRING,
         userId: DataTypes.STRING
     });
-    Calendar.sync({force: false})
     return Calendar;
 
     };

@@ -34,6 +34,36 @@ module.exports = function(app) {
         var newHang = req.body;
         db.Hang.create(newHang).then(function(dbHang){
             res.json(dbHang)
+            console.log(dbHang);
+            db.User.findOne({where: {email: dbHang.pending_member}}).then(function(dbUser){
+                var recipient = dbUser.id;
+                
+                db.Calendar.findAll({where:{userId: recipient}}).then(function(res){
+                    for(var i = 0; i < res.length; i++){
+                        if (res[i].date === dbHang.hangDate){
+                        console.log("Yes");
+                        var recipientStartTime = res[i].timeStart;
+                        var recipientEndTime = res[i].timeEnd;
+                            if(recipientStartTime < dbHang.hangTime < recipientEndTime){
+                                console.log("heck no");
+                                db.User.update({notification: true}, 
+                                    {where: {id: recipient}})
+                            }
+                            else {
+                                console.log("hell yeah");
+                                db.User.update({notification: true});
+                                //change notification to 1 on recipient's table
+                            }
+                        
+                        }
+                        else {
+                            console.log("nope");
+                        }
+                    }
+
+                    
+                })
+            })
         })
     });
 

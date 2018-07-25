@@ -114,8 +114,8 @@ moment().format();
          var date = event.start.date;
          var time = event.start.dateTime;
          var endTime = event.end.dateTime;
-         var start = moment(time).format("h:mm a")
-         var end = moment(endTime).format("h:mm a")
+         var start = moment(time).format("X")
+         var end = moment(endTime).format("X")
          var formatDate = moment(date).format("M D YYYY");
          if (!start) {
            start = event.start.date;
@@ -171,11 +171,14 @@ $("#addEvent").on("click", function(){
 
 $("#addHang").on("click", function(){
     event.preventDefault();
+    var rawDate = $("#hang-date").val().trim();
+    var rawTime = $("#hang-time").val().trim()
     var newHang = {
         hangName: $("#hang-name").val().trim(),
         aboutHang: $("#about-hang").val().trim(),
-        hangDate: $("#hang-date").val().trim(),
-        hangTime: $("#hang-time").val().trim(),
+        pending_member: $("#event-recipient").val().trim(),
+        hangDate: moment(rawDate).format("M D YYYY"),
+        hangTime: moment(rawTime, "LT").format("X"),
         UserId: userId
     }
     $.post("/api/hangs", newHang, function(result){
