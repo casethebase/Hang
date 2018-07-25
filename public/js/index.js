@@ -107,16 +107,21 @@ moment().format();
      'calendarId': 'primary',
    }).then(function(response) {
      var events = response.result.items;
+     
 
      if (events.length > 0) {
        for (i = 0; i < events.length; i++) {
          var event = events[i];
-         var date = event.start.date;
+         var date = event.start.dateTime;
+         
          var time = event.start.dateTime;
+         console.log("These are the Google Calendar API start times" + time);
          var endTime = event.end.dateTime;
          var start = moment(time).format("X")
          var end = moment(endTime).format("X")
          var formatDate = moment(date).format("M D YYYY");
+         console.log("These are the Google Calendar API dates" + formatDate);
+         
          if (!start) {
            start = event.start.date;
          }
