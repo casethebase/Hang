@@ -160,11 +160,14 @@ $("#logOut-btn").on("click", function(){
 
 $("#addEvent").on("click", function(){
     event.preventDefault();
+    var rawDate = $("#event-date").val().trim();
+    var rawStartTime = $("#start-time").val().trim();
+    var rawEndTime = $("#end-time").val().trim();
     var newEvent = {
         eventName: $("#event-name").val().trim(),
-        date: $("#event-date").val().trim(),
-        timeStart: $("#start-time").val().trim(),
-        timeEnd: $("#end-time").val().trim(),
+        date: moment(rawDate).format("M D YYYY"),
+        timeStart: moment(rawStartTime, "LT").format("X"),
+        timeEnd: moment(rawEndTime, "LT").format("X"),
         userId: userId
     }
     $.post("/api/event", newEvent, function(result){
