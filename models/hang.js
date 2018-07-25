@@ -4,12 +4,19 @@ module.exports = function(sequelize, DataTypes) {
     aboutHang: DataTypes.STRING,
     hangDate: DataTypes.STRING,
     hangTime: DataTypes.STRING,
-    creatorId: DataTypes.STRING,
     members: DataTypes.STRING,
-    pending_members: DataTypes.STRING,
-  }, {});
+    pending_member: DataTypes.STRING,
+    notification: DataTypes.BOOLEAN
+  });
 
-  Hang.sync({force: true})
+  Hang.associate = function(models) {
+    Hang.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return Hang;
 };
 
