@@ -58,7 +58,8 @@ body {
 
 .people-hang002 {
     height: 100vh;
-    float: left;
+    /* width: 30%; */
+    /* float: left; */
 }
 
 #sign-up {
@@ -108,4 +109,8 @@ body {
 #logOut-btn {
    margin-bottom: 2%;
    margin-top: 2%;
+}
+
+.createHang {
+    width: 40%;
 }

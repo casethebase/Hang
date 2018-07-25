@@ -31,9 +31,38 @@
     </div>
   </div>
 
+<div class="createHang">
+            <h3>Hang Name:</h3>
+
+    <div class="row">
+        <div class="input-field col s6">
+          <input id="hang-name" type="text" class="form-control" placeholder="New hang name">
+          <label for="hang-name">Hang Name:</label>
+         </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+          <input id="about-hang" type="text" class="form-control" placeholder="">
+          <label for="about-hang">What is this hang for?</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+          <input id="time" type="text" class="timepicker" placeholder="">
+          <label for="hang-time">What time?</label>
+        </div>
+    </div>
+     <div class="row">
+        <div class="input-field col s6">
+          <input id="hang-date" type="date" class="form-control" placeholder="">
+          <label for="hang-date">What date?</label>
+        </div>
+    </div>
+</div>
 
 
-    <div class="wrap-container">
+
+    {{!-- <div class="wrap-container">
         <div class="col s12 m6 l6 xl6">
             <h3>Add a new hang:</h3>
             <form id="createHang">
@@ -45,6 +74,14 @@
                     <label for="about-hang">What is this hang for?</label>
                     <textarea id="about-hang" class="form-control"  placeholder=""></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="hang-time">What time?</label>
+                    <input type="time" id="hang-time" class="form-control"  placeholder=""></textarea>
+                </div>
+                 <div class="form-group">
+                    <label for="hang-date">What date?</label>
+                    <input type="date" id="hang-date" class="form-control"  placeholder=""></textarea>
+                </div>
                 <button id="addHang" type="submit" class="btn btn-primary">Add</button>
             </form>
         </div>
@@ -52,9 +89,52 @@
 
     </div>
 </div>
+</div> --}}
+
+    <div class="wrap-container-calendar">
+         <div class="col-md-4">
+            <h3>Add a new event to your calendar:</h3>
+            <form id="createEvent">
+                <div class="form-group">
+                    <label for="event-name">Event Name:</label>
+                    <input type="text" class="form-control" id="event-name">
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Date:</label>
+                    <input id="event-date" type="datetime" class="form-control"  placeholder=""></input>
+                </div>
+                
+                <div class="form-group">
+                    <label for="start-time">Start time:</label>
+                    <input id="start-time" type="text" class="timepicker"  placeholder=""></input>
+                </div>
+                <div class="form-group">
+                    <label for="end-time">End time:</label>
+                    <input id="end-time" type="datetime" class="form-control"  placeholder=""></input>
+                </div>
+                <button id="addEvent" type="text" class="btn btn-primary timepicker">Add</button>
+
+            </form>
+        </div>
+
+        </div>
+        <div class="col-md-4">
+        <button id="authorize_button" style="display: none;"> Authorize</button>
+    {{!-- <button id="signout_button" style="display: none;">Sign Out</button> --}}
+
+    <pre id="content"></pre>
+    </div>
+    </div>
+
+</div>
 
 
-<script type="text/javascript" src="/js/index.js" ></script> 
-
-
-
+<script type="text/javascript" src="/js/index.js"> </script>
+<script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+       $(document).ready(function(){
+    $('.timepicker').timepicker();
+  });
+       
+    </script>
