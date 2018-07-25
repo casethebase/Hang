@@ -1,12 +1,13 @@
   <nav>
     <div class="nav-wrapper white">
         <a href="#" class="brand-logo center">Hang</a>
-        <button id="logOut-btn" class="btn btn-primary yellow right">Log out</button>
         <li id="hello-there">Hello <span id="userName"></span></li>
         <ul id="nav-mobile" class="left hide-on-med-and-down"> </ul>
 
     </div>
   </nav>
+
+          <button id="logOut-btn" class="btn btn-primary yellow right">Logout</button>
 
 
 
@@ -30,6 +31,8 @@
       </div>
     </div>
   </div>
+
+
 
 <div class="createHang">
             <h3>Hang Name:</h3>
@@ -110,7 +113,7 @@
                 </div>
                 <div class="form-group">
                     <label for="end-time">End time:</label>
-                    <input id="end-time" type="datetime" class="form-control"  placeholder=""></input>
+                    <input id="end-time" type="datetime" class="timepicker"  placeholder=""></input>
                 </div>
                 <button id="addEvent" type="text" class="btn btn-primary timepicker">Add</button>
 
@@ -120,7 +123,7 @@
         </div>
         <div class="col-md-4">
         <button id="authorize_button" style="display: none;"> Authorize</button>
-    {{!-- <button id="signout_button" style="display: none;">Sign Out</button> --}}
+        {{!-- <button id="signout_button" style="display: none;">Sign Out</button> --}}
 
     <pre id="content"></pre>
     </div>
@@ -129,12 +132,16 @@
 </div>
 
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.timepicker').timepicker();
+  });
+         
+</script>
+
 <script type="text/javascript" src="/js/index.js"> </script>
 <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
-       $(document).ready(function(){
-    $('.timepicker').timepicker();
-  });
-       
-    </script>
+</script>
+

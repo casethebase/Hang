@@ -151,7 +151,7 @@ $.get("/api/user/"+userId, function(result){
 $("#logOut-btn").on("click", function(){
     sessionStorage.clear();
     window.location.href = "/login";
-})
+});
 
 $("#addEvent").on("click", function(){
     event.preventDefault();
