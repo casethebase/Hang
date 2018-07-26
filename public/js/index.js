@@ -107,16 +107,33 @@ moment().format();
      'calendarId': 'primary',
    }).then(function(response) {
      var events = response.result.items;
+<<<<<<< HEAD
+=======
+     
+>>>>>>> chris
 
      if (events.length > 0) {
        for (i = 0; i < events.length; i++) {
          var event = events[i];
+<<<<<<< HEAD
          var date = event.start.date;
          var time = event.start.dateTime;
          var endTime = event.end.dateTime;
          var start = moment(time).format("h:mm a")
          var end = moment(endTime).format("h:mm a")
          var formatDate = moment(date).format("M D YYYY");
+=======
+         var date = event.start.dateTime;
+         
+         var time = event.start.dateTime;
+         console.log("These are the Google Calendar API start times" + time);
+         var endTime = event.end.dateTime;
+         var start = moment(time).format("X")
+         var end = moment(endTime).format("X")
+         var formatDate = moment(date).format("M D YYYY");
+         console.log("These are the Google Calendar API dates" + formatDate);
+         
+>>>>>>> chris
          if (!start) {
            start = event.start.date;
          }
@@ -169,13 +186,40 @@ $("#addEvent").on("click", function(){
     console.log(newEvent);
 })
 
+$("#addEvent").on("click", function(){
+    event.preventDefault();
+    var rawDate = $("#event-date").val().trim();
+    var rawStartTime = $("#start-time").val().trim();
+    var rawEndTime = $("#end-time").val().trim();
+    var newEvent = {
+        eventName: $("#event-name").val().trim(),
+        date: moment(rawDate).format("M D YYYY"),
+        timeStart: moment(rawStartTime, "LT").format("X"),
+        timeEnd: moment(rawEndTime, "LT").format("X"),
+        userId: userId
+    }
+    $.post("/api/event", newEvent, function(result){
+        console.log(result)
+    })
+    window.location.href = "/dashboard/"+userId;
+    console.log(newEvent);
+})
+
 $("#addHang").on("click", function(){
     event.preventDefault();
+    var rawDate = $("#hang-date").val().trim();
+    var rawTime = $("#hang-time").val().trim()
     var newHang = {
         hangName: $("#hang-name").val().trim(),
         aboutHang: $("#about-hang").val().trim(),
+<<<<<<< HEAD
         hangDate: $("#hang-date").val().trim(),
         hangTime: $("#hang-time").val().trim(),
+=======
+        pending_member: $("#event-recipient").val().trim(),
+        hangDate: moment(rawDate).format("M D YYYY"),
+        hangTime: moment(rawTime, "LT").format("X"),
+>>>>>>> chris
         UserId: userId
     }
     $.post("/api/hangs", newHang, function(result){
@@ -184,3 +228,4 @@ $("#addHang").on("click", function(){
     window.location.href = "/dashboard/"+userId;
     console.log(newHang)
 })
+
