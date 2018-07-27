@@ -1,24 +1,20 @@
   <nav>
     <div class="nav-wrapper white">
-        <a href="#" class="brand-logo center">Hang</a>
-        <li id="hello-there">Hello <span id="userName"></span></li>
-        <ul id="nav-mobile" class="left hide-on-med-and-down"> </ul>
-
+      {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down"> --}}
+        <p id="hello">Hello, <span id="userName"><b></b></span></p>
+  
+      </ul>
     </div>
   </nav>
-
-          <button id="logOut-btn" class="btn btn-primary yellow right">Logout</button>
-
-
-
-
-
-     <div class="row">
+ 
+ <br>
+<div class="card-hang">
+  <div class="row valign-wrapper align-right">
     <div class="col s12 m6">
-      <div class="card card-container white">
-        <div class="card-content">
-          <span class="card-title">Here are the hangs you've created:</span>
-               <ul>
+      <div class="card white">
+        <div class="card-content black-text">
+          <span class="card-title">Your upcoming hangs:</span>
+           <ul>
                 {{#each hangs}}
                     <div>
                         <p><b>{{hangName}}</b></p>
@@ -31,42 +27,12 @@
       </div>
     </div>
   </div>
-
-
-
-<div class="createHang">
-            <h3>Hang Name:</h3>
-
-    <div class="row">
-        <div class="input-field col s6">
-          <input id="hang-name" type="text" class="form-control" placeholder="New hang name">
-          <label for="hang-name">Hang Name:</label>
-         </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-          <input id="about-hang" type="text" class="form-control" placeholder="">
-          <label for="about-hang">What is this hang for?</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-          <input id="time" type="text" class="timepicker" placeholder="">
-          <label for="hang-time">What time?</label>
-        </div>
-    </div>
-     <div class="row">
-        <div class="input-field col s6">
-          <input id="hang-date" type="date" class="form-control" placeholder="">
-          <label for="hang-date">What date?</label>
-        </div>
-    </div>
 </div>
 
 
 
-    {{!-- <div class="wrap-container">
-        <div class="col s12 m6 l6 xl6">
+
+        <div class="col-md-4 enter-hang">
             <h3>Add a new hang:</h3>
             <form id="createHang">
                 <div class="form-group">
@@ -77,93 +43,29 @@
                     <label for="about-hang">What is this hang for?</label>
                     <textarea id="about-hang" class="form-control"  placeholder=""></textarea>
                 </div>
-<<<<<<< HEAD
-                <div class="form-group">
-=======
                    <div class="form-group">
                     <label for="event-recipient">Recipient email:</label>
                     <input type="text" class="form-control" id="event-recipient">
                 </div>
                  <div class="form-group">
->>>>>>> chris
-                    <label for="hang-time">What time?</label>
+                    <label for="hang-time">Hang time:</label>
                     <input type="time" id="hang-time" class="form-control"  placeholder=""></textarea>
                 </div>
                  <div class="form-group">
-                    <label for="hang-date">What date?</label>
+                    <label for="hang-date">Hang date:</label>
                     <input type="date" id="hang-date" class="form-control"  placeholder=""></textarea>
                 </div>
-                <button id="addHang" type="submit" class="btn btn-primary">Add</button>
-            </form>
-        </div>
-    </div>
-
-    </div>
-</div>
-</div> --}}
-
-    <div class="wrap-container-calendar">
-         <div class="col-md-4">
-            <h3>Add a new event to your calendar:</h3>
-            <form id="createEvent">
-                <div class="form-group">
-                    <label for="event-name">Event Name:</label>
-                    <input type="text" class="form-control" id="event-name">
-                </div>
-                <div class="form-group">
-                    <label for="event-date">Date:</label>
-                    <input id="event-date" type="datetime" class="form-control"  placeholder=""></input>
-                </div>
-                
-                <div class="form-group">
-                    <label for="start-time">Start time:</label>
-                    <input id="start-time" type="text" class="timepicker"  placeholder=""></input>
-                </div>
-                <div class="form-group">
-                    <label for="end-time">End time:</label>
-                    <input id="end-time" type="datetime" class="timepicker"  placeholder=""></input>
-                </div>
-                <button id="addEvent" type="text" class="btn btn-primary timepicker">Add</button>
+                <button id="addHang" type="submit" class="btn btn-primary yellow darken-2">Add</button>
 
             </form>
-        </div>
-<<<<<<< HEAD
+
+
+
+
 
         </div>
         <div class="col-md-4">
-        <button id="authorize_button" style="display: none;"> Authorize</button>
-        {{!-- <button id="signout_button" style="display: none;">Sign Out</button> --}}
-=======
-         <div class="col-md-4">
-            <h3>Add a new event to your calendar:</h3>
-            <form id="createEvent">
-                <div class="form-group">
-                    <label for="event-name">Event Name:</label>
-                    <input type="text" class="form-control" id="event-name">
-                </div>
-             
-                <div class="form-group">
-                    <label for="event-date">Date:</label>
-                    <input id="event-date" type="datetime" class="form-control"  placeholder=""></input>
-                </div>
-                
-                <div class="form-group">
-                    <label for="start-time">Start time:</label>
-                    <input id="start-time" type="datetime" class="form-control"  placeholder=""></input>
-                </div>
-                <div class="form-group">
-                    <label for="end-time">End time:</label>
-                    <input id="end-time" type="datetime" class="form-control"  placeholder=""></input>
-                </div>
-                <button id="addEvent" type="submit" class="btn btn-primary">Add</button>
-
-            </form>
-        </div>
-        <div class="col-md-4">
-              <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button>
->>>>>>> chris
-
     <pre id="content"></pre>
     </div>
     </div>
@@ -171,20 +73,18 @@
 </div>
 
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.timepicker').timepicker();
-  });
-         
-</script>
-
 <script type="text/javascript" src="/js/index.js"> </script>
 <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
-<<<<<<< HEAD
-</script>
-=======
-    </script>
->>>>>>> chris
+    </script> 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
 

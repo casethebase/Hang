@@ -107,22 +107,11 @@ moment().format();
      'calendarId': 'primary',
    }).then(function(response) {
      var events = response.result.items;
-<<<<<<< HEAD
-=======
      
->>>>>>> chris
 
      if (events.length > 0) {
        for (i = 0; i < events.length; i++) {
          var event = events[i];
-<<<<<<< HEAD
-         var date = event.start.date;
-         var time = event.start.dateTime;
-         var endTime = event.end.dateTime;
-         var start = moment(time).format("h:mm a")
-         var end = moment(endTime).format("h:mm a")
-         var formatDate = moment(date).format("M D YYYY");
-=======
          var date = event.start.dateTime;
          
          var time = event.start.dateTime;
@@ -133,7 +122,6 @@ moment().format();
          var formatDate = moment(date).format("M D YYYY");
          console.log("These are the Google Calendar API dates" + formatDate);
          
->>>>>>> chris
          if (!start) {
            start = event.start.date;
          }
@@ -212,14 +200,9 @@ $("#addHang").on("click", function(){
     var newHang = {
         hangName: $("#hang-name").val().trim(),
         aboutHang: $("#about-hang").val().trim(),
-<<<<<<< HEAD
-        hangDate: $("#hang-date").val().trim(),
-        hangTime: $("#hang-time").val().trim(),
-=======
         pending_member: $("#event-recipient").val().trim(),
         hangDate: moment(rawDate).format("M D YYYY"),
         hangTime: moment(rawTime, "LT").format("X"),
->>>>>>> chris
         UserId: userId
     }
     $.post("/api/hangs", newHang, function(result){

@@ -20,7 +20,3 @@ module.exports = function(sequelize, DataTypes) {
   return Hang;
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> chris
