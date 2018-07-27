@@ -2,36 +2,12 @@
     <div class="nav-wrapper white">
       {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down"> --}}
         <p id="hello">Hello, <span id="userName"><b></b></span></p>
-  
+        <a id ="logOut-btn" href="url">Sign Out</a>
+
       </ul>
     </div>
   </nav>
- 
- <br>
-<div class="card-hang">
-  <div class="row valign-wrapper align-right">
-    <div class="col s12 m6">
-      <div class="card white">
-        <div class="card-content black-text">
-          <span class="card-title"><h4>Your upcoming hangs:</h4></span>
-           <ul>
-                {{#each hangs}}
-                    <div>
-                        <p><b>{{hangName}}</b></p>
-                        <p>{{aboutHang}}</p>
-                    </div>
-                    <hr>
-                {{/each}}
-            </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-            <button id="logOut-btn" class="btn btn-primary">Log out</button>
-
-
+<br>
 
         <div class="col-md-4 enter-hang">
             <h4>Add a new hang:</h4>
@@ -57,9 +33,58 @@
                     <input type="date" id="hang-date" class="form-control"  placeholder=""></textarea>
                 </div>
                 <button id="addHang" type="submit" class="btn btn-primary yellow darken-2">Add</button>
+            </form>
+        </div>
+
+
+      <div class="wrap-container-calendar">
+         <div class="col-md-4 calendar-form">
+            <h4>Add a new event to your calendar:</h4>
+            <form id="createEvent">
+                <div class="form-group">
+                    <label for="event-name">Event Name:</label>
+                    <input type="text" class="form-control" id="event-name">
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Date:</label>
+                    <input id="event-date" type="datetime" class="form-control"  placeholder=""></input>
+                </div>
+                
+                <div class="form-group">
+                    <label for="start-time">Start time:</label>
+                    <input id="start-time" type="text" class="timepicker"  placeholder=""></input>
+                </div>
+                <div class="form-group">
+                    <label for="end-time">End time:</label>
+                    <input id="end-time" type="datetime" class="timepicker"  placeholder=""></input>
+                </div>
+                <button id="addEvent" type="text" class="btn btn-primary timepicker">Add</button>
 
             </form>
+    </div>
 
+
+     <br>
+<div class="card-hang">
+  <div class="row valign-wrapper align-right">
+    <div class="col s12 m6">
+      <div class="card white">
+        <div class="card-content black-text">
+          <span class="card-title"><h4>Your upcoming hangs:</h4></span>
+           <ul>
+                {{#each hangs}}
+                    <div>
+                        <p><b>{{hangName}}</b></p>
+                        <p>{{aboutHang}}</p>
+                    </div>
+                    <hr>
+                {{/each}}
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
