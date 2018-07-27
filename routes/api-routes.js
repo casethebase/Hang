@@ -115,7 +115,6 @@ module.exports = function(app) {
         })
     });
 
-    
 
     //this is just for testing
     app.get("/api/users", function(req, res) {
@@ -153,10 +152,27 @@ module.exports = function(app) {
                     res.json(hangInvite);
                 })
             }
-        }) 
+        })
     });
 
 
+    app.put("/api/pendingHang/:id:email", function(req, res) {
+        // We just have to specify which todo we want to destroy with "where"
+        db.Hang.update({
+            pending_member: "",
+            members: req.params.email
+        },{
+          where: {
+            id: req.params.id,
+            
+          }
+        }).then(function(dbHang) {
+            var test = JSON.stringify(dbHang);
+            console.log("WHAT IS THIS? ==================" + test);
+          res.json(dbHang);
+        });
+    
+      });
 }
 
 
