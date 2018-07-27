@@ -1,5 +1,5 @@
 var userId = sessionStorage.getItem("userId");
-
+var eventsArray= [];
 function getSession(){
     if (userId){
         return userId;
@@ -140,6 +140,22 @@ moment().format();
             console.log(result)
         })
        }
+
+        $.get("/api/calendar/"+userId, function(res){
+          eventsArray= res;
+          console.log(eventsArray)
+          $('#mycalendar').fullCalendar({
+            header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,basicWeek,basicDay'
+            },
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events: eventsArray
+          });
+        })
      } else {
        appendPre('No upcoming events found.');
      }

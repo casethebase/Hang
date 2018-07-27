@@ -1,7 +1,67 @@
-.header-container{
-    height: 50%;
+*{
+    font-family: 'Rubik', sans-serif;
 }
 
-.header-picture{
-    height: 20%;
+#header{
+    height: 60px;
+    background: #1653B7;
+    margin-bottom: 50px;
+    padding: 5px 60px;
+}
+.header-item{
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    color: white;
+}
+.btn-cstm{
+    font-size: 14px;
+    border-color: #E03E3E;
+    background: white;
+    margin: 7px;
+    padding: 6px 12px;
+    color: black;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-cstm:hover{
+    background: #E03E3E;
+    color: white;
+}
+
+#userName{
+    font-weight: 700;
+}
+
+#logOut-btn{
+    font-size: 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-top: 12px;
+    background: none;
+    color: white;
+    border-color: white;
+}
+
+.cal-btn{
+    float: left;
+}
+#hang-card{
+    margin-bottom: 70px;
+}
+#calBtn-div{
+    width: 100%;
+    display: inline-block;
+}
+h3{
+    font-weight: 900;
+    color: #E03E3E;
+}
+h4{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+#createHang{
+    font-size: 12px;
 }

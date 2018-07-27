@@ -1,4 +1,30 @@
 var db = require("../models");
+var moment = require('moment');
+var eventsArray= [];
+function convertEventsFromTable(events) {
+    if (events.length > 0) {
+      for(i = 0; i < events.length; i++) {
+        var event = events[i];
+        var name = event.eventName;
+        var rawDate = event.date;
+        var rawTimeStart = moment.unix(event.timeStart);
+        var rawTimeEnd = moment.unix(event.timeEnd);
+        var date = moment(rawDate).format("YYYY M D");
+        var timeStart = moment(rawTimeStart).format("LTS");
+        var timeEnd = moment(rawTimeEnd).format("LTS");
+        var start = date + "T" + timeStart;
+        var end = date + "T" + timeEnd;
+        var eventObject = {
+          title: name,
+          start: start,
+          end: end,
+        };
+        eventsArray.push(eventObject);
+      };
+    };
+    console.log("HERE!!")
+    console.log(eventsArray)
+  };
 
 
 module.exports = function(app) {
@@ -97,6 +123,21 @@ module.exports = function(app) {
         db.User.findAll({}).then(function(dbUsers){
             res.json(dbUsers);
         })
+    });
+
+
+    app.get("/api/calendar/:id", function(req, res) {
+        
+        var userID = req.params.id;
+        db.Calendar.findAll({where:{userId: userID}}).then(function(dbCalendar){
+        if(dbCalendar) {
+            convertEventsFromTable(dbCalendar);
+            res.status(200).json(eventsArray);
+           
+        } else {
+            res.status(404).send("404")
+        }
+        });
     });
 
 
