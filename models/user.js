@@ -4,6 +4,8 @@ module.exports = function(sequelize, DataTypes) {
         email: DataTypes.STRING,
         username: DataTypes.STRING,
         password: DataTypes.STRING,
+        notification: {type: DataTypes.BOOLEAN,
+            defaultValue: false}
     });
 
     User.associate = function(models) {
