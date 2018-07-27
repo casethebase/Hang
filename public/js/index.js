@@ -105,6 +105,8 @@ moment().format();
  function listUpcomingEvents() {
    gapi.client.calendar.events.list({
      'calendarId': 'primary',
+     'maxResults': '2500',
+      'singleEvents': 'True'
    }).then(function(response) {
      var events = response.result.items;
      
@@ -167,6 +169,12 @@ $.get("/api/user/"+userId, function(result){
     console.log(result);
     $("#userName").text(result.name)
 });
+
+$.get("/api/pendingHang/"+userId, function(result){
+  for(var i = 0; i < result.length; i++){
+    console.log(result[i]);
+  }
+})
 
 
 $("#logOut-btn").on("click", function(){

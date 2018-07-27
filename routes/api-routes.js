@@ -140,6 +140,22 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/pendingHang/:id", function(req, res) {
+        console.log("starting the pendingHang API route");
+        var userId = req.params.id;
+        db.User.findOne({where: {id:userId}}).then(function(dbUser){
+            var email = dbUser.email;
+            console.log("Here is the user's email: " + email);
+            if(dbUser.notification === true) {
+                db.Hang.findAll({where: 
+                    {pending_member: email}
+                }).then(function(hangInvite){
+                    res.json(hangInvite);
+                })
+            }
+        }) 
+    });
+
 
 }
 
