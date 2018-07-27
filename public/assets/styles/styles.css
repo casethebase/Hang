@@ -73,17 +73,16 @@ body, html {
 
 /*  SignUp Handlebars */
 #sign-up2 {
-
     margin-top: -30%;
     float: left;
     color: #E8A828;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .wrap-second-signupform {
     margin-right: 5%;
-    margin-top: -500px;
-    width: 30%;
+    margin-top: -600px;
+    width: 40%;
     float: right;
 }
 
@@ -218,9 +217,13 @@ body, html {
         margin-top: 5%;
     }
 /* signUp.handlebars */
+    .people-hang002 {
+        width: 100%;
+    }
+
     .signup-container2 {
         width: 100%;
-        margin-top: 5%;
+        margin-top: 2%;
     }
     
 
