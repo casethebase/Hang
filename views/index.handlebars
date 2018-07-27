@@ -13,7 +13,7 @@
     <div class="col s12 m6">
       <div class="card white">
         <div class="card-content black-text">
-          <span class="card-title">Your upcoming hangs:</span>
+          <span class="card-title"><h4>Your upcoming hangs:</h4></span>
            <ul>
                 {{#each hangs}}
                     <div>
@@ -29,11 +29,12 @@
   </div>
 </div>
 
+            <button id="logOut-btn" class="btn btn-primary">Log out</button>
 
 
 
         <div class="col-md-4 enter-hang">
-            <h3>Add a new hang:</h3>
+            <h4>Add a new hang:</h4>
             <form id="createHang">
                 <div class="form-group">
                     <label for="hang-name">Hang Name:</label>

@@ -1,4 +1,5 @@
 body, html {
+    background-color: #F5F5F7;
     /* display: flex;
     flex-direction: column;  */
     margin: 0;
@@ -16,7 +17,8 @@ body, html {
 .wrap {
     float: right;
     margin-top: -40%;
-    width: 30%;
+    width: 40%;
+    padding: 2%;
 
     /* margin-left: 7%; */
 }
@@ -71,8 +73,9 @@ body, html {
 
 /*  SignUp Handlebars */
 #sign-up2 {
+
     margin-top: -30%;
-    float: right;
+    float: left;
     color: #E8A828;
     font-size: 30px;
 }
@@ -141,7 +144,88 @@ body, html {
 }
 
 .enter-hang {
+    box-shadow: #D3D3D3 1px 1px 1px 2px ;
+    padding: 2%;
+    background-color: white;
     margin: 5%;
     margin-top: 10px;
     float: right;
 }
+
+
+@media all and (min-width: 1024px) and (max-width: 1280px) { 
+/* login.handlebars */
+.people-hang {
+    margin-top: -100px ;
+}    
+
+.wrap {
+    margin-top: 100px;
+    width: 100%;
+    padding: 5% !important;
+}
+
+
+}
+ 
+@media all and (min-width: 768px) and (max-width: 1024px) {
+     /* login.handlebars */
+     .people-hang {
+        margin-top: -100px ;
+    }    
+
+    .wrap {
+        width: 100%;
+        margin-top: 100px;
+        padding: 10%;
+    }
+ }
+ 
+@media all and (min-width: 480px) and (max-width: 768px) { 
+    /* login.handlebars */
+    .people-hang {
+        margin-top: -300px ;
+    }    
+
+    .wrap {
+        margin-top: 10%;
+        width: 100%;
+        padding: 5%;
+    }
+
+    .people-hang002 {
+        width: 100%;
+    }
+
+    .wrap-second-signupform {
+        margin-top: 1%;
+        width: 90%;
+        padding: 2%;
+    }
+
+
+}
+ 
+@media all and (max-width: 480px) {
+/* login.handlebars */
+
+    .people-hang {
+        margin-top: -50px !important;
+    }
+
+
+    #id {
+        margin-top: 5%;
+    }
+/* signUp.handlebars */
+    .signup-container2 {
+        width: 100%;
+        margin-top: 5%;
+    }
+    
+
+/* index.handlebars */
+
+
+
+ }
