@@ -86,7 +86,23 @@
   </div>
 </div>
 
-
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Would you like to hang?</h4>
+      <p>{{hangName}}</p>
+      <p>{{aboutHang}}</p>
+      <p>{{hangDate}}</p>
+      <p>{{hangTime}}</p>
+      <p>{{members}}</p>
+      <p>{{pending_member}}</p>
+      <p>{{notification}}</p>
+    </div>
+    <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Hang</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Can't Make It</a>
+    </div>
+  </div>
 
 
         </div>
@@ -104,6 +120,9 @@
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script> 
+
+                    {{!-- $("#resultsModal").modal("toggle"); --}}
+
  
  
  
