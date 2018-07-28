@@ -155,8 +155,7 @@ module.exports = function(app) {
             if(dbUser.notification === true) {
                 db.Hang.findAll({where: 
                     {pending_member: email}
-                }).then(function(hangInvite){
-                    
+                }).then(function(hangInvite){           
                     res.json(hangInvite);
                     var testHang = JSON.stringify(hangInvite);
                     console.log("Here is the user's pending hang info: " + testHang);
@@ -182,8 +181,11 @@ module.exports = function(app) {
         });
     
       });
-
-
+                    res.json(hangInvite);
+                })
+            }
+        }) 
+    });
 }
 
 

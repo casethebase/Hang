@@ -173,7 +173,6 @@ $.get("/api/user/"+userId, function(result){
 $.get("/api/pendingHang/"+userId, function(result){
   for(var i = 0; i < result.length; i++){
     hangInfo = result[i];
-    console.log(result[i]);
   }
 })
 
@@ -217,7 +216,6 @@ $("#addEvent").on("click", function(){
     window.location.href = "/dashboard/"+userId;
     console.log(newEvent);
 })
-
 
 $("#addHang").on("click", function(){
     event.preventDefault();
