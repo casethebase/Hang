@@ -1,7 +1,7 @@
 var db = require("../models");
 var moment = require('moment');
-var eventsArray= [];
 function convertEventsFromTable(events) {
+    var eventsArray= [];
     var eventObject = {}
     if (events.length > 0) {
       for(i = 0; i < events.length; i++) {
@@ -25,7 +25,8 @@ function convertEventsFromTable(events) {
     };
     console.log("HERE!!")
     console.log(eventsArray)
-  };
+    return eventsArray;
+};
 
 
 module.exports = function(app) {
@@ -133,10 +134,11 @@ module.exports = function(app) {
         var userID = req.params.id;
         db.Calendar.findAll({where:{userId: userID}}).then(function(dbCalendar){
         if(dbCalendar) {
-            convertEventsFromTable(dbCalendar);
+            var eventsArray = convertEventsFromTable(dbCalendar);
             res.status(200).json(eventsArray);
            
-        } else {
+        } 
+        else {
             res.status(404).send("404")
         }
         });
