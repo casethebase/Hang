@@ -4,8 +4,15 @@ module.exports = function(sequelize, DataTypes) {
         email: DataTypes.STRING,
         username: DataTypes.STRING,
         password: DataTypes.STRING,
+        notification: {type: DataTypes.BOOLEAN,
+            defaultValue: false}
     });
-    User.sync({force: false})
+
+    User.associate = function(models) {
+        User.hasMany(models.Hang, {
+          onDelete: "cascade"
+        });
+      };
     return User;
 
     };

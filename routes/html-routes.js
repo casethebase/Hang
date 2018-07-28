@@ -14,7 +14,7 @@ module.exports = function(app) {
 
     app.get("/dashboard/:userId", function(req,res){
         var userId = req.params.userId;
-        db.Hang.findAll({where:{creatorId:userId}}).then(function(dbHangs){
+        db.Hang.findAll({where:{UserId:userId}}).then(function(dbHangs){
             res.render("index", {hangs:dbHangs});
         })
     });
@@ -25,6 +25,10 @@ module.exports = function(app) {
    
     app.get("/signUp", function(req, res) {
         res.render("signUp");
+    });
+
+    app.get("/calendar", function(req, res) {
+        res.render("calendar");
     });
 
 }

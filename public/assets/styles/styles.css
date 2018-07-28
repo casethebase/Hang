@@ -1,7 +1,282 @@
-.header-container{
-    height: 50%;
+body, html {
+    background-color: #F5F5F7;
+    /* display: flex;
+    flex-direction: column;  */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.header-picture{
-    height: 20%;
+
+#easy {
+    margin-left: -50%;
+    z-index: 1;
 }
+
+
+.wrap {
+    float: right;
+    margin-top: -40%;
+    width: 30%;
+    padding: 2%;
+
+    /* margin-left: 7%; */
+}
+
+.people-hang {
+    height: 100vh;
+    /* width: 1000px; */
+    float: left;
+}
+
+#title {
+    color: #17344F;
+    align-content: center;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#subtitle{
+    padding: 5%;
+    font-size: 16px;
+    color: #3D4247;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#create-account {
+    color: #3E94DC;
+    font-size: 12px;
+}
+
+.logo-hang {
+    width: 60%;
+    height: 100vh;
+    float: left;
+}
+
+.container-singup{
+    width: 30%;
+    /* float: left; */
+}
+
+.people-hang002 {
+    width: 60%;
+    height: 100vh;
+    /* width: 30%; */
+}
+
+#sign-up {
+    font-size: 14px;
+    color: #3D4247;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*  SignUp Handlebars */
+#sign-up2 {
+    margin-top: -30%;
+    float: left;
+    color: #E8A828;
+    font-size: 40px;
+}
+
+.wrap-second-signupform {
+    margin-right: 5%;
+    margin-top: -600px;
+    width: 40%;
+    float: right;
+}
+
+
+
+
+#hang {
+    float: left;
+    font-size: 16px;
+}
+
+#welcome {
+    margin-top: 10%;
+    font-size: 28px;
+}
+
+
+#hello {
+    font-size: 14px; 
+    float: left;
+}
+
+.card-container {
+    width: 50%;
+}
+
+.wrap-container {
+    width: 50%;
+    float: left;
+}
+
+/* index.handlebars */
+
+    /* Navbar */
+
+#logOut-btn {
+    color: black;
+    float: right;
+    padding: 1%;
+}
+
+#hello-there {
+    padding: 1%;
+    font-size: 20px;
+    padding: 1%;
+    list-style-type: none;
+    color: #E8A828;
+}
+
+
+
+.createHang {
+    width: 40%;
+}
+
+#hello {
+    margin-left: 15px;
+    color: #E8A828;
+    font-size: 24px; 
+}
+
+
+/* Hangs Card  */
+
+.card-hang {
+    float: left !important;
+    width: 50%;
+    margin-top: 3%;
+}
+
+.enter-hang {
+    box-shadow: #D3D3D3 1px 1px 1px 2px ;
+    padding: 2%;
+    background-color: white;
+    margin: 5%;
+    margin-top: 10px;
+    float: left;
+}
+
+
+    /* Calendar Card */
+
+.calendar-form {
+    margin-top: 1% !important;
+    float: right;
+    background-color: white;
+    box-shadow: #D3D3D3 1px 1px 1px 2px ;
+    padding: 2%;
+    margin: 2%;
+}
+
+#event-formtitle {
+    margin-bottom: 15px !important;
+    margin: 4%;
+}
+
+#caldiv {
+    width: 60%;
+    background-color: white;
+    height: 50%;
+    clear: left;
+    margin: auto;
+}
+
+
+
+@media all and (min-width: 1024px) and (max-width: 1500px) { 
+    .wrap {
+        padding: 5%;
+    }
+}
+
+
+@media all and (min-width: 1024px) and (max-width: 1280px) { 
+/* login.handlebars */
+.people-hang {
+    margin-top: -100px ;
+}    
+
+.wrap {
+    margin-top: 100px;
+    width: 80%;
+    padding: 5% !important;
+}
+
+
+}
+ 
+@media all and (min-width: 768px) and (max-width: 1024px) {
+     /* login.handlebars */
+     .people-hang {
+        margin-top: -100px ;
+    }    
+
+    .wrap {
+        width: 100%;
+        margin-top: 100px;
+        padding: 10%;
+    }
+ }
+ 
+@media all and (min-width: 480px) and (max-width: 768px) { 
+    /* login.handlebars */
+    .people-hang {
+        margin-top: -360px ;
+    }    
+
+    .wrap {
+        margin-top: -25%;
+        width: 100%;
+        padding: 5%;
+    }
+
+    .people-hang002 {
+        width: 100%;
+    }
+
+    .wrap-second-signupform {
+        margin-top: 1%;
+        width: 90%;
+        padding: 2%;
+    }
+
+
+}
+ 
+@media all and (max-width: 480px) {
+/* login.handlebars */
+
+    .people-hang {
+        margin-top: -50px !important;
+    }
+
+    .wrap {
+        margin-top: -5%;
+    }
+
+
+    #id {
+        margin-top: 5%;
+    }
+/* signUp.handlebars */
+    .people-hang002 {
+        width: 100%;
+    }
+
+    .signup-container2 {
+        width: 100%;
+        margin-top: 2%;
+    }
+    
+
+/* index.handlebars */
+
+
+
+ }
