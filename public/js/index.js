@@ -1,5 +1,6 @@
 var userId = sessionStorage.getItem("userId");
 var eventsArray= [];
+var hangInfo;
 function getSession(){
     if (userId){
         return userId;
@@ -143,26 +144,25 @@ moment().format();
         })
        }
 
-        $.get("/api/calendar/"+userId, function(res){
-          eventsArray= res;
-          console.log(eventsArray)
-          $('#mycalendar').fullCalendar({
-            header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'month,basicWeek,basicDay'
-            },
-            navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: eventsArray
-          });
-        })
+        
      } else {
        appendPre('No upcoming events found.');
      }
    });
  }
+
+  //this sends AJAX call to API route where our user gets removed from pending_member and added to member field
+function deletePendingMember(hangInfo) {
+  console.log("WHEN THE USER ACCEPTS, THIS IS THE HANG INFO WE HOLD ONTO" + hangInfo);
+  var hangID = "1";
+  var email = hangInfo.pending_member;
+  $.ajax({
+    method: "PUT",
+    url: "/api/pendingHang/"+hangID+email
+
+  }).then()
+  window.location.href = "/dashboard/"+userId;
+}
 
  //AJAX CALLS
 $.get("/api/user/"+userId, function(result){
@@ -171,16 +171,45 @@ $.get("/api/user/"+userId, function(result){
 });
 
 $.get("/api/pendingHang/"+userId, function(result){
-  for(var i = 0; i < result.length; i++){
-    console.log(result[i]);
+  if(result.length>0){
+    $("#notif").text("!")
+    $("#notif").attr("class", "pending")
+    for(var i = 0; i < result.length; i++){
+      hangInfo = result[i];
+      $("#phang-name").text(hangInfo.hangName)
+      $("#phang-about").text(hangInfo.aboutHang)
+
+      var hangDate = moment(hangInfo.hangDate).format("LL")
+      var hangTime = moment.unix(hangInfo.hangTime)
+
+      $("#phang-date").text(hangDate)
+      $("#phang-time").text(moment(hangTime).format("LT"))
+      
+    }
   }
 })
 
+$.get("/api/calendar/"+userId, function(res){
+  eventsArray= res;
+  console.log(eventsArray)
+  $('#mycalendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,basicWeek,basicDay'
+    },
+    navLinks: true, // can click day/week names to navigate views
+    editable: true,
+    eventLimit: true, // allow "more" link when too many events
+    events: eventsArray
+  });
+})
 
+//BUTTONS
 $("#logOut-btn").on("click", function(){
     sessionStorage.clear();
     window.location.href = "/login";
-})
+});
 
 $("#addEvent").on("click", function(){
     event.preventDefault();
@@ -201,6 +230,7 @@ $("#addEvent").on("click", function(){
     console.log(newEvent);
 })
 
+
 $("#addHang").on("click", function(){
     event.preventDefault();
     var rawDate = $("#hang-date").val().trim();
@@ -220,3 +250,30 @@ $("#addHang").on("click", function(){
     console.log(newHang)
 })
 
+//if user chooses yes to hang invite...//
+$("#canDo").on("click", function(){
+  //send to have them removed from the pending_member column and added to the member column
+  deletePendingMember(hangInfo);
+  addToCalendarTable(hangInfo);
+  //this adds it to the Google calendar, but I need the Hang object
+  var event = {
+    'summary': hangInfo.aboutHang,
+    'start': {
+      'dateTime': hangInfo.dateTime,
+      'timeZone': 'America/Chicago'
+    },
+    'end': {
+      'dateTime': hangInfo.dateTime,
+      'timeZone': 'America/Chicago'
+    },
+    }
+
+  var request = gapi.client.calendar.events.insert({
+    'calendarId': 'primary',
+    'resource': event
+  });
+
+  request.execute(function(event) {
+    appendPre('Event created: ' + event.htmlLink);
+  });
+});
