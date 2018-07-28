@@ -179,6 +179,14 @@ body, html {
     margin: 4%;
 }
 
+#caldiv {
+    width: 60%;
+    background-color: white;
+    height: 50%;
+    clear: left;
+    margin: auto;
+}
+
 
 
 @media all and (min-width: 1024px) and (max-width: 1500px) { 
