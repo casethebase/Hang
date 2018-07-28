@@ -1,5 +1,6 @@
 var db = require("../models");
 var moment = require('moment');
+var hangInfo;
 function convertEventsFromTable(events) {
     var eventsArray= [];
     var eventObject = {}
@@ -155,6 +156,7 @@ module.exports = function(app) {
                 db.Hang.findAll({where: 
                     {pending_member: email}
                 }).then(function(hangInvite){
+                    
                     res.json(hangInvite);
                     var testHang = JSON.stringify(hangInvite);
                     console.log("Here is the user's pending hang info: " + testHang);
