@@ -2,6 +2,7 @@ var db = require("../models");
 var moment = require('moment');
 var eventsArray= [];
 function convertEventsFromTable(events) {
+    var eventObject = {}
     if (events.length > 0) {
       for(i = 0; i < events.length; i++) {
         var event = events[i];
@@ -9,18 +10,18 @@ function convertEventsFromTable(events) {
         var rawDate = event.date;
         var rawTimeStart = moment.unix(event.timeStart);
         var rawTimeEnd = moment.unix(event.timeEnd);
-        var date = moment(rawDate).format("YYYY M D");
-        var timeStart = moment(rawTimeStart).format("LTS");
-        var timeEnd = moment(rawTimeEnd).format("LTS");
+        var date = moment(rawDate).format("YYYY-MM-DD");
+        var timeStart = moment(rawTimeStart).format("HH:mm:ss");
+        var timeEnd = moment(rawTimeEnd).format("HH:mm:ss");
         var start = date + "T" + timeStart;
         var end = date + "T" + timeEnd;
-        var eventObject = {
+        eventObject = {
           title: name,
           start: start,
           end: end,
         };
-        eventsArray.push(eventObject);
       };
+      eventsArray.push(eventObject);
     };
     console.log("HERE!!")
     console.log(eventsArray)
@@ -57,47 +58,48 @@ module.exports = function(app) {
     });
 
     app.post("/api/hangs", function(req,res){
-        //this is the hang object the user just created
+        
+         //update this counter each time an event has a conflict. if no conflicts after looping through each event, then success
+         var conflicts = 0;
+         //this is the hang object the user just created
         var newHang = req.body;
         //add the new hang to the Hang table
-        db.Hang.create(newHang).then(function(dbHang){
-            res.json(dbHang)
-            console.log(dbHang);
+        
+            // console.log(dbHang);
             //look through the user table for any email addresses that match the person we're inviting (pending_member from hang object)
-            db.User.findOne({where: {email: dbHang.pending_member}}).then(function(dbUser){
+            db.User.findOne({where: {email: newHang.pending_member}}).then(function(dbUser){
                 //if found, take the id associated with that user and bind it to recipient
                 var recipient = dbUser.id;
                 //grab all events from the Calendar table that were created by recipient
                 db.Calendar.findAll({where:{userId: recipient}}).then(function(res){
-                    //update this counter each time an event has a conflict. if no conflicts after looping through each event, then success
-                    var conflicts = 0;
+                   
                     //cycle through each event
                     for(var i = 0; i < res.length; i++){
                         //if the date of the hang matches the event date from the calendar table, then apply more conditions to check the times
-                        if (res[i].date === dbHang.hangDate){
+                        if (res[i].date ===  newHang.hangDate){
                             //bind the value of the calendar event start time to recipientStarttime and convert it to a number
                             var recipientStartTime = parseInt(res[i].timeStart);
                             //bind the value of the calendar event end time to recipientEndTime and convert it to a number
                             var recipientEndTime = parseInt(res[i].timeEnd);
                             //if the hang start time falls between the calendar event's start and end time, then they are not available for the hang
-                            if(recipientStartTime < dbHang.hangTime < recipientEndTime){
+                            if(recipientStartTime < newHang.hangTime < recipientEndTime){
                                 console.log("No, they already have something during that timeframe. + 1 to conflicts");
                                 conflicts = conflicts + 1;
-                                console.log(conflicts);
+
                             }
                         }
                     }
                     if(conflicts === 0) {
                         //change notification to 1 on recipient's table because there are no conflicts after going through every event
                         console.log("All Clear for hangin!")
-                        db.User.update({notification: true}, 
-                            {where: {id: recipient}})
+                        db.Hang.create(newHang).then(function(){
+                            db.User.update({notification: true}, 
+                                {where: {id: recipient}})
+                        })
                     }
-
                     
                 })
             })
-        })
     });
 
 
@@ -115,6 +117,7 @@ module.exports = function(app) {
         })
     });
 
+    
 
     //this is just for testing
     app.get("/api/users", function(req, res) {
@@ -139,7 +142,8 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/api/pendingHang/:id", function(req, res) {
+     //looks for any pending hangs that match our user's email address
+     app.get("/api/pendingHang/:id", function(req, res) {
         console.log("starting the pendingHang API route");
         var userId = req.params.id;
         db.User.findOne({where: {id:userId}}).then(function(dbUser){
@@ -150,14 +154,15 @@ module.exports = function(app) {
                     {pending_member: email}
                 }).then(function(hangInvite){
                     res.json(hangInvite);
+                    var testHang = JSON.stringify(hangInvite);
+                    console.log("Here is the user's pending hang info: " + testHang);
                 })
             }
         })
     });
 
-
+    //once user accepts invite, this route will remove them from the pending_member field and add them to the member field.
     app.put("/api/pendingHang/:id:email", function(req, res) {
-        // We just have to specify which todo we want to destroy with "where"
         db.Hang.update({
             pending_member: "",
             members: req.params.email
@@ -173,6 +178,8 @@ module.exports = function(app) {
         });
     
       });
+
+
 }
 
 

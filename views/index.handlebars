@@ -1,45 +1,18 @@
-<link href="/assets/styles/fullCalendar/fullcalendar.min.css" rel="stylesheet">
+ <link href="/assets/styles/fullCalendar/fullcalendar.min.css" rel="stylesheet">
 <link href="/assets/styles/fullCalendar/fullcalendar.print.min.css" rel="stylesheet" media="print">
-<div id="header">
-    <button id="logOut-btn" class="header-item btn btn-cstm">Log out</button>
-    <p class="header-item"><span id="userName"></span></p>
-</div>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <button id="canDo" type="submit" class="btn btn-cstm">Can Hang</button>
-            <div id="hang-card">
-                <h3>Your upcoming hangs:<br></h3>
-                <hr>
-                <ul>
-                    {{#each hangs}}
-                        <div>
-                            <p><b>{{hangName}}</b></p>
-                            <p>{{aboutHang}}</p>
-                        </div>
-                        <hr>
-                    {{/each}}
-                </ul>
+ 
+  <nav>
+    <div class="nav-wrapper white">
+      {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down"> --}}
+        <p id="hello">Hello, <span id="userName"><b></b></span></p>
+        <a id ="logOut-btn" href="url">Sign Out</a>
 
-                
-            </div>
-            <div id="caldiv">
-                <div id="calBtn-div">
-                    <button type="button" class="cal-btn btn btn-cstm" data-toggle="modal" data-target="#addEvent-modal">
-                        New calendar item
-                    </button>
-                    <div class="cal-btn google-sync">
-                        <button class="btn btn-cstm" id="authorize_button" style="display: none;">Sync with Google</button>
-                        <button class="btn btn-cstm" id="signout_button" style="display: none;">Sign Out</button>
-                        <pre id="content"></pre>
-                    </div>
-                </div>
-                <div id="mycalendar">h
+      </ul>
+    </div>
+  </nav>
+<br>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-4 enter-hang">
             <h4>Add a new hang:</h4>
             <form id="createHang">
                 <div class="form-group">
@@ -50,37 +23,26 @@
                     <label for="about-hang">What is this hang for?</label>
                     <textarea id="about-hang" class="form-control"  placeholder=""></textarea>
                 </div>
-                <div class="form-group">
+                   <div class="form-group">
                     <label for="event-recipient">Recipient email:</label>
                     <input type="text" class="form-control" id="event-recipient">
                 </div>
                  <div class="form-group">
-                    <label for="hang-time">What time?</label>
-                    <input type="time" id="hang-time" class="form-control"  placeholder="">
+                    <label for="hang-time">Hang time:</label>
+                    <input type="time" id="hang-time" class="form-control"  placeholder=""></textarea>
                 </div>
                  <div class="form-group">
-                    <label for="hang-date">What date?</label>
-                    <input type="date" id="hang-date" class="form-control"  placeholder="">
+                    <label for="hang-date">Hang date:</label>
+                    <input type="date" id="hang-date" class="form-control"  placeholder=""></textarea>
                 </div>
-                <button id="addHang" type="submit" class="btn btn-cstm">Add</button>
-
+                <button id="addHang" type="submit" class="btn btn-primary yellow darken-2">Add</button>
             </form>
         </div>
-        
-    </div>
 
-</div>
 
-<div class="modal fade" id="addEvent-modal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add something to your calendar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+      <div class="wrap-container-calendar">
+         <div class="col-md-4 calendar-form">
+            <h4>Add a new event to your calendar:</h4>
             <form id="createEvent">
                 <div class="form-group">
                     <label for="event-name">Event Name:</label>
@@ -94,19 +56,82 @@
                 
                 <div class="form-group">
                     <label for="start-time">Start time:</label>
-                    <input id="start-time" type="datetime" class="form-control"  placeholder="">
+                    <input id="start-time" type="text" class="timepicker"  placeholder=""></input>
                 </div>
                 <div class="form-group">
                     <label for="end-time">End time:</label>
-                    <input id="end-time" type="datetime" class="form-control"  placeholder="">
+                    <input id="end-time" type="datetime" class="timepicker"  placeholder=""></input>
                 </div>
-                <button id="addEvent" class="btn btn-cstm" data-dismiss="modal">Add</button>
+                <button id="addEvent" type="text" class="btn btn-primary timepicker">Add</button>
 
             </form>
+    </div>
+
+    <div id="caldiv">
+                <div id="calBtn-div">
+                    <button type="button" class="cal-btn btn btn-cstm" data-toggle="modal" data-target="#addEvent-modal">
+                        New calendar item
+                    </button>
+                    <div class="cal-btn google-sync">
+                        <button class="btn btn-cstm" id="authorize_button" style="display: none;">Sync with Google</button>
+                        <button class="btn btn-cstm" id="signout_button" style="display: none;">Sign Out</button>
+                        <pre id="content"></pre>
+                    </div>
+                </div>
+                <div id="mycalendar">
+                </div>
+            </div>
+        </div>
+
+
+     <br>
+<div class="card-hang">
+  <div class="row valign-wrapper align-right">
+    <div class="col s12 m6">
+      <div class="card white">
+        <div class="card-content black-text">
+          <span class="card-title"><h4>Your upcoming hangs:</h4></span>
+           <ul>
+                {{#each hangs}}
+                    <div>
+                        <p><b>{{hangName}}</b></p>
+                        <p>{{aboutHang}}</p>
+                    </div>
+                    <hr>
+                {{/each}}
+            </ul>
+        </div>
       </div>
-      
     </div>
   </div>
+</div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Would you like to hang?</h4>
+      <p>{{hangName}}</p>
+      <p>{{aboutHang}}</p>
+      <p>{{hangDate}}</p>
+      <p>{{hangTime}}</p>
+      <p>{{members}}</p>
+      <p>{{pending_member}}</p>
+      <p>{{notification}}</p>
+    </div>
+    <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Hang</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Can't Make It</a>
+    </div>
+  </div>
+
+
+        </div>
+        <div class="col-md-4">
+    <button id="signout_button" style="display: none;">Sign Out</button>
+    <pre id="content"></pre>
+    </div>
+    </div>
+
 </div>
 
 
@@ -122,5 +147,17 @@
 <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
+    </script> 
+
+                    {{!-- $("#resultsModal").modal("toggle"); --}}
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+
 

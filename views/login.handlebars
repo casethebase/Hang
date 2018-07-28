@@ -1,23 +1,38 @@
-<div class="container">
+{{!-- <div class="wrap-background"> --}}
+
+<div class="login-landing valign-wrapper left-align">
+  <img class ="people-hang l4 xl4" src="../assets/images/hang-background002.svg"></div>
+</div>
+
+
+<div class="wrap">
+    <p id="title">Welcome Back</p>
+    <p id="subtitle">Login to your account.</p>
+
+ <div class="row signup-container s6 m6 l6 valign-wrapper right-align">
+    <form class="col">
     <div class="row">
-        <div class="col-md-6">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input id="login-email" type="email" class="form-control" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input id="login-pass" type="password" class="form-control" placeholder="Password">
-                </div>
-
-                <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-            <a href="/signup"><p><br>Click to create a new account</p></a>
+        <div class="input-field col s6">
+          <input id="login-email" type="email" class="form-control" placeholder="Enter email">
+          <label for="exampleInputEmail1" type="email">Email</label>
         </div>
     </div>
+      <div class="row">
+        <div class="input-field col s6" >
+          <input id="login-pass" type="password" class="form-control">
+          <label for="exampleInputPassword1">Password</label>
+        </div>
+      </div>  
+        <button class="right btn waves-effect waves-light submitBtn yellow darken-2" type="submit" name="action">Submit</button>
+    </form>
 </div>
+    <a href="/signup"><p id="create-account"><br>Click to create a new account</p></a>
+</div>
+
+{{!-- </div> --}}
+        
 <script type="text/javascript" src="js/login.js"></script>
+
+
 
 

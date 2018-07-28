@@ -1,6 +1,6 @@
 var userId = sessionStorage.getItem("userId");
 
-$("#submitBtn").on("click", function(){
+$(".submitBtn").on("click", function(){
     event.preventDefault();
     var loginInfo = {
         email : $("#login-email").val().trim(),

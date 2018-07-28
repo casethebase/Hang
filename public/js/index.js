@@ -143,21 +143,7 @@ moment().format();
         })
        }
 
-        $.get("/api/calendar/"+userId, function(res){
-          eventsArray= res;
-          console.log(eventsArray)
-          $('#mycalendar').fullCalendar({
-            header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'month,basicWeek,basicDay'
-            },
-            navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: eventsArray
-          });
-        })
+        
      } else {
        appendPre('No upcoming events found.');
      }
@@ -176,11 +162,27 @@ $.get("/api/pendingHang/"+userId, function(result){
   }
 })
 
+$.get("/api/calendar/"+userId, function(res){
+  eventsArray= res;
+  console.log(eventsArray)
+  $('#mycalendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,basicWeek,basicDay'
+    },
+    navLinks: true, // can click day/week names to navigate views
+    editable: true,
+    eventLimit: true, // allow "more" link when too many events
+    events: eventsArray
+  });
+})
 
+//BUTTONS
 $("#logOut-btn").on("click", function(){
     sessionStorage.clear();
     window.location.href = "/login";
-})
+});
 
 $("#addEvent").on("click", function(){
     event.preventDefault();
@@ -200,6 +202,7 @@ $("#addEvent").on("click", function(){
     window.location.href = "/dashboard/"+userId;
     console.log(newEvent);
 })
+
 
 $("#addHang").on("click", function(){
     event.preventDefault();
