@@ -1,24 +1,19 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1>Welcome to hang</h1>
-            <h2>Hello <span id="userName"><b></b></span></h2>
-            <h4>Here's all the hangs you created:<br></h4>
-            <hr>
-            <ul>
-                {{#each hangs}}
-                    <div>
-                        <p><b>{{hangName}}</b></p>
-                        <p>{{aboutHang}}</p>
-                    </div>
-                    <hr>
-                {{/each}}
-            </ul>
+ <link href="/assets/styles/fullCalendar/fullcalendar.min.css" rel="stylesheet">
+<link href="/assets/styles/fullCalendar/fullcalendar.print.min.css" rel="stylesheet" media="print">
+ 
+  <nav>
+    <div class="nav-wrapper white">
+      {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down"> --}}
+        <p id="hello">Hello, <span id="userName"><b></b></span></p>
+        <a id ="logOut-btn" href="url">Sign Out</a>
 
-            <button id="logOut-btn" class="btn btn-primary">Log out</button>
-        </div>
-        <div class="col-md-4">
-            <h3>Add a new hang:</h3>
+      </ul>
+    </div>
+  </nav>
+<br>
+
+        <div class="col-md-4 enter-hang">
+            <h4>Add a new hang:</h4>
             <form id="createHang">
                 <div class="form-group">
                     <label for="hang-name">Hang Name:</label>
@@ -28,13 +23,141 @@
                     <label for="about-hang">What is this hang for?</label>
                     <textarea id="about-hang" class="form-control"  placeholder=""></textarea>
                 </div>
-                <button id="addHang" type="submit" class="btn btn-primary">Add</button>
-
+                   <div class="form-group">
+                    <label for="event-recipient">Recipient email:</label>
+                    <input type="text" class="form-control" id="event-recipient">
+                </div>
+                 <div class="form-group">
+                    <label for="hang-time">Hang time:</label>
+                    <input type="time" id="hang-time" class="form-control"  placeholder=""></textarea>
+                </div>
+                 <div class="form-group">
+                    <label for="hang-date">Hang date:</label>
+                    <input type="date" id="hang-date" class="form-control"  placeholder=""></textarea>
+                </div>
+                <button id="addHang" type="submit" class="btn btn-primary yellow darken-2">Add</button>
             </form>
         </div>
+
+
+      <div class="wrap-container-calendar">
+         <div class="col-md-4 calendar-form">
+            <h4>Add a new event to your calendar:</h4>
+            <form id="createEvent">
+                <div class="form-group">
+                    <label for="event-name">Event Name:</label>
+                    <input type="text" class="form-control" id="event-name">
+                </div>
+             
+                <div class="form-group">
+                    <label for="event-date">Date:</label>
+                    <input id="event-date" type="datetime" class="form-control"  placeholder="">
+                </div>
+                
+                <div class="form-group">
+                    <label for="start-time">Start time:</label>
+                    <input id="start-time" type="text" class="timepicker"  placeholder=""></input>
+                </div>
+                <div class="form-group">
+                    <label for="end-time">End time:</label>
+                    <input id="end-time" type="datetime" class="timepicker"  placeholder=""></input>
+                </div>
+                <button id="addEvent" type="text" class="btn btn-primary timepicker">Add</button>
+
+            </form>
     </div>
+
+    <div id="caldiv">
+                <div id="calBtn-div">
+                    <button type="button" class="cal-btn btn btn-cstm" data-toggle="modal" data-target="#addEvent-modal">
+                        New calendar item
+                    </button>
+                    <div class="cal-btn google-sync">
+                        <button class="btn btn-cstm" id="authorize_button" style="display: none;">Sync with Google</button>
+                        <button class="btn btn-cstm" id="signout_button" style="display: none;">Sign Out</button>
+                        <pre id="content"></pre>
+                    </div>
+                </div>
+                <div id="mycalendar">
+                </div>
+            </div>
+        </div>
+
+
+     <br>
+<div class="card-hang">
+  <div class="row valign-wrapper align-right">
+    <div class="col s12 m6">
+      <div class="card white">
+        <div class="card-content black-text">
+          <span class="card-title"><h4>Your upcoming hangs:</h4></span>
+           <ul>
+                {{#each hangs}}
+                    <div>
+                        <p><b>{{hangName}}</b></p>
+                        <p>{{aboutHang}}</p>
+                    </div>
+                    <hr>
+                {{/each}}
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Would you like to hang?</h4>
+      <p>{{hangName}}</p>
+      <p>{{aboutHang}}</p>
+      <p>{{hangDate}}</p>
+      <p>{{hangTime}}</p>
+      <p>{{members}}</p>
+      <p>{{pending_member}}</p>
+      <p>{{notification}}</p>
+    </div>
+    <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Hang</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Can't Make It</a>
+    </div>
+  </div>
+
+
+        </div>
+        <div class="col-md-4">
+    <button id="signout_button" style="display: none;">Sign Out</button>
+    <pre id="content"></pre>
+    </div>
+    </div>
+
 </div>
 
 
+<script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
+<script src="/js/fullCalendar/moment.min.js"></script> 
+<script src="/js/fullCalendar/jquery.min.js"></script> 
+<script src="/js/fullCalendar/fullcalendar.min.js"></script> 
+<script src="/js/calendar.js"></script> 
 <script type="text/javascript" src="/js/index.js"> </script>
+<script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script> 
+
+                    {{!-- $("#resultsModal").modal("toggle"); --}}
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+
 
