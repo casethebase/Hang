@@ -13,11 +13,17 @@
                 <hr>
                 <ul>
                     {{#each hangs}}
-                        <div>
+                    <div class="eachHang">
+                        <div class="hang-body">
                             <p><b>{{hangName}}</b></p>
                             <p>{{aboutHang}}</p>
                         </div>
-                        <hr>
+                        <div class="hang-info">
+                            <p class="hang-date" >{{hangDate}}</p>
+                            <p class="hang-time">{{hangTime}}</p>
+                        </div>
+                    </div>
+                    
                     {{/each}}
                 </ul>
 

@@ -2,6 +2,33 @@
     font-family: 'Rubik', sans-serif;
 }
 
+.home-container, .home-row{
+    padding: 0;
+    margin:0;
+    margin-right:0;
+    padding-right: 0;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    
+}
+
+.hero-image{
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+.login-col{
+    padding: 100px 50px;
+}
+
+#hero-img {
+    height: 100vh;
+    width:100%;
+    object-fit: cover;
+}
+
+
 #header{
     height: 60px;
     background: #1653B7;
@@ -64,4 +91,17 @@ h4{
 
 #createHang{
     font-size: 12px;
+}
+
+.hang-body{
+    width: 70%;
+    float: left;
+}
+
+.hang-info{
+    width:30%;
+    float: left;
+}
+.eachHang{
+    display: block;
 }

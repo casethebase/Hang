@@ -157,6 +157,23 @@ module.exports = function(app) {
         }) 
     });
 
+    app.put("/api/pendingHang/:id:email", function(req, res) {
+        // We just have to specify which todo we want to destroy with "where"
+        db.Hang.update({
+            pending_member: "",
+            members: req.params.email
+        },{
+          where: {
+            id: req.params.id,
+            
+          }
+        }).then(function(dbHang) {
+            var test = JSON.stringify(dbHang);
+            console.log("WHAT IS THIS? ==================" + test);
+          res.json(dbHang);
+        });
+    
+      });
 
 }
 
