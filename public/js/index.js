@@ -1,5 +1,5 @@
 var userId = sessionStorage.getItem("userId");
-
+var eventsArray= [];
 function getSession(){
     if (userId){
         return userId;
@@ -105,6 +105,8 @@ moment().format();
  function listUpcomingEvents() {
    gapi.client.calendar.events.list({
      'calendarId': 'primary',
+     'maxResults': '2500',
+      'singleEvents': 'True'
    }).then(function(response) {
      var events = response.result.items;
      
@@ -140,6 +142,22 @@ moment().format();
             console.log(result)
         })
        }
+
+        $.get("/api/calendar/"+userId, function(res){
+          eventsArray= res;
+          console.log(eventsArray)
+          $('#mycalendar').fullCalendar({
+            header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,basicWeek,basicDay'
+            },
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events: eventsArray
+          });
+        })
      } else {
        appendPre('No upcoming events found.');
      }
@@ -151,6 +169,12 @@ $.get("/api/user/"+userId, function(result){
     console.log(result);
     $("#userName").text(result.name)
 });
+
+$.get("/api/pendingHang/"+userId, function(result){
+  for(var i = 0; i < result.length; i++){
+    console.log(result[i]);
+  }
+})
 
 
 $("#logOut-btn").on("click", function(){
@@ -165,6 +189,25 @@ $("#addEvent").on("click", function(){
         date: $("#event-date").val().trim(),
         timeStart: $("#start-time").val().trim(),
         timeEnd: $("#end-time").val().trim(),
+        userId: userId
+    }
+    $.post("/api/event", newEvent, function(result){
+        console.log(result)
+    })
+    window.location.href = "/dashboard/"+userId;
+    console.log(newEvent);
+})
+
+$("#addEvent").on("click", function(){
+    event.preventDefault();
+    var rawDate = $("#event-date").val().trim();
+    var rawStartTime = $("#start-time").val().trim();
+    var rawEndTime = $("#end-time").val().trim();
+    var newEvent = {
+        eventName: $("#event-name").val().trim(),
+        date: moment(rawDate).format("M D YYYY"),
+        timeStart: moment(rawStartTime, "LT").format("X"),
+        timeEnd: moment(rawEndTime, "LT").format("X"),
         userId: userId
     }
     $.post("/api/event", newEvent, function(result){

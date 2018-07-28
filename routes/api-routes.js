@@ -1,4 +1,31 @@
 var db = require("../models");
+var moment = require('moment');
+var eventsArray= [];
+function convertEventsFromTable(events) {
+    var eventObject = {}
+    if (events.length > 0) {
+      for(i = 0; i < events.length; i++) {
+        var event = events[i];
+        var name = event.eventName;
+        var rawDate = event.date;
+        var rawTimeStart = moment.unix(event.timeStart);
+        var rawTimeEnd = moment.unix(event.timeEnd);
+        var date = moment(rawDate).format("YYYY-MM-DD");
+        var timeStart = moment(rawTimeStart).format("HH:mm:ss");
+        var timeEnd = moment(rawTimeEnd).format("HH:mm:ss");
+        var start = date + "T" + timeStart;
+        var end = date + "T" + timeEnd;
+        eventObject = {
+          title: name,
+          start: start,
+          end: end,
+        };
+      };
+      eventsArray.push(eventObject);
+    };
+    console.log("HERE!!")
+    console.log(eventsArray)
+  };
 
 
 module.exports = function(app) {
@@ -97,6 +124,37 @@ module.exports = function(app) {
         db.User.findAll({}).then(function(dbUsers){
             res.json(dbUsers);
         })
+    });
+
+
+    app.get("/api/calendar/:id", function(req, res) {
+        
+        var userID = req.params.id;
+        db.Calendar.findAll({where:{userId: userID}}).then(function(dbCalendar){
+        if(dbCalendar) {
+            convertEventsFromTable(dbCalendar);
+            res.status(200).json(eventsArray);
+           
+        } else {
+            res.status(404).send("404")
+        }
+        });
+    });
+
+    app.get("/api/pendingHang/:id", function(req, res) {
+        console.log("starting the pendingHang API route");
+        var userId = req.params.id;
+        db.User.findOne({where: {id:userId}}).then(function(dbUser){
+            var email = dbUser.email;
+            console.log("Here is the user's email: " + email);
+            if(dbUser.notification === true) {
+                db.Hang.findAll({where: 
+                    {pending_member: email}
+                }).then(function(hangInvite){
+                    res.json(hangInvite);
+                })
+            }
+        }) 
     });
 
 
