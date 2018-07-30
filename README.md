@@ -1,5 +1,7 @@
 # H A N G
 
+## Presentation: https://prezi.com/view/fEgn2zw8oVZvzdBWhnzV/
+
 ## Overview
 * This app allows friends to create profiles and link up to other friends, perhaps by way of facebook or twitter / gmail etc.
 
