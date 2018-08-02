@@ -2,9 +2,9 @@
 
 ## Contributors
 
-Chris Heckendorn -- https://github.com/wreckendorn
-Elvira Barrientos -- https://github.com/spaceyb0t
-Em Karimifar -- https://github.com/karimifar
+* Chris Heckendorn -- https://github.com/wreckendorn
+* Elvira Barrientos -- https://github.com/spaceyb0t
+* Em Karimifar -- https://github.com/karimifar
 
 ## Presentation: https://prezi.com/view/fEgn2zw8oVZvzdBWhnzV/
 
