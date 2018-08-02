@@ -1,4 +1,10 @@
-# H A N G
+# HANG
+
+## Contributors
+
+Chris Heckendorn -- https://github.com/wreckendorn
+Elvira Barrientos -- https://github.com/spaceyb0t
+Em Karimifar -- https://github.com/karimifar
 
 ## Presentation: https://prezi.com/view/fEgn2zw8oVZvzdBWhnzV/
 
@@ -28,7 +34,7 @@ with each request to hang out, the user should be able to enter in a message tha
 
 * the app should also allow you to set your normal schedule there and build a list of activities you like to do. e.g. I like to hang and play video games, other friends who also like video games should see this when they join the app with a pop-up like "hey, casey likes a bunch of stuff you like, maybe you two should hang?
 
-# Additional Features:
+# Additional Features planned for future development:
 
 * a feature where it tells you if you've accepted a hang-invite with people you don't know
 
@@ -41,3 +47,4 @@ with each request to hang out, the user should be able to enter in a message tha
 * set private hangs and public hangs. if you're on a date it might be private, if you're hosting a party, might be public
 
 * determine if the hang will cost money
+
