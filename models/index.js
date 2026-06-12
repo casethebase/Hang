@@ -5,11 +5,20 @@ var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || "development";
-var config    = require(__dirname + '/../config/config.json')[env];
+var config    = require(__dirname + '/../config/config.json')[env] || {};
 var db        = {};
+var databaseUrl = process.env.DATABASE_URL || process.env.JAWSDB_URL;
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+if (databaseUrl) {
+  var sequelize = new Sequelize(databaseUrl, {
+    dialect: "mysql",
+    logging: false
+  });
+} else if (config.use_env_variable && process.env[config.use_env_variable]) {
+  var sequelize = new Sequelize(process.env[config.use_env_variable], {
+    dialect: config.dialect || "mysql",
+    logging: false
+  });
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
@@ -20,7 +29,7 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(function(file) {
-    var model = sequelize['import'](path.join(__dirname, file));
+    var model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 

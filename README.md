@@ -8,7 +8,23 @@
 
 ## Presentation: https://prezi.com/view/fEgn2zw8oVZvzdBWhnzV/
 
-## Accessible at: https://calm-wave-14176.herokuapp.com
+## Deployment
+
+This project was originally deployed on Heroku. It is now configured to run on Vercel as an Express app.
+
+Required Vercel environment variables:
+
+* `DATABASE_URL`: Hosted MySQL connection string, for example `mysql://USER:PASSWORD@HOST:3306/DATABASE`.
+* `DB_SYNC`: Optional. Set to `true` only when you intentionally want Sequelize to create missing tables during local startup.
+* `DB_SYNC_ALTER`: Optional. Set to `true` with `DB_SYNC=true` only when you intentionally want Sequelize to alter existing tables.
+
+Do not enable destructive sync in production. The old Heroku startup used `sequelize.sync({ force: true })`, which dropped and recreated tables on every boot; that behavior has been removed.
+
+Deploy with:
+
+```bash
+vercel --prod
+```
 
 ## Overview
 * This app allows friends to create profiles and link up to other friends, perhaps by way of facebook or twitter / gmail etc.
@@ -49,4 +65,3 @@ with each request to hang out, the user should be able to enter in a message tha
 * set private hangs and public hangs. if you're on a date it might be private, if you're hosting a party, might be public
 
 * determine if the hang will cost money
-

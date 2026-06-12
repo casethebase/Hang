@@ -2,23 +2,26 @@
   "name": "hang",
   "version": "1.0.0",
   "description": "## Overview This app allows friends to create profiles and link up to other friends, perhaps by way of facebook or twitter / gmail etc.",
-  "main": "models.js",
+  "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.11",
-    "materialize-css": "^1.0.0-rc.2",
-    "moment": "^2.22.2",
-    "mysql": "^2.16.0",
-    "mysql2": "^1.5.3",
-    "path": "^0.12.7",
-    "sequelize": "^4.38.0"
+    "express": "^5.2.1",
+    "express-handlebars": "^9.0.1",
+    "handlebars": "^4.7.9",
+    "moment": "^2.30.1",
+    "mysql2": "^3.22.5",
+    "sequelize": "^6.37.8"
+  },
+  "overrides": {
+    "uuid": "11.1.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "node --check server.js && node --check routes/api-routes.js && node --check routes/html-routes.js && node --check models/index.js",
+    "dev": "node server.js",
     "start": "node server.js"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "repository": {
     "type": "git",

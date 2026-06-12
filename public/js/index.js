@@ -154,11 +154,11 @@ moment().format();
   //this sends AJAX call to API route where our user gets removed from pending_member and added to member field
 function deletePendingMember(hangInfo) {
   console.log("WHEN THE USER ACCEPTS, THIS IS THE HANG INFO WE HOLD ONTO" + hangInfo);
-  var hangID = "1";
+  var hangID = hangInfo.id;
   var email = hangInfo.pending_member;
   $.ajax({
     method: "PUT",
-    url: "/api/pendingHang/"+hangID+email
+    url: "/api/pendingHang/" + hangID + "/" + encodeURIComponent(email)
 
   }).then()
   window.location.href = "/dashboard/"+userId;
