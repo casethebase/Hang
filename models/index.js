@@ -9,14 +9,53 @@ var config    = require(__dirname + '/../config/config.json')[env] || {};
 var db        = {};
 var databaseUrl = process.env.DATABASE_URL || process.env.JAWSDB_URL;
 
+function getDialectOptions(dialect) {
+  if (dialect === "postgres" && process.env.DB_SSL !== "false") {
+    return {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    };
+  }
+
+  return {};
+}
+
+function getDialectModule(dialect) {
+  if (dialect === "postgres") {
+    return require("pg");
+  }
+
+  return undefined;
+}
+
+function getDialectFromUrl(databaseUrl) {
+  if (!databaseUrl) {
+    return null;
+  }
+
+  if (databaseUrl.indexOf("postgres://") === 0 || databaseUrl.indexOf("postgresql://") === 0) {
+    return "postgres";
+  }
+
+  return "mysql";
+}
+
 if (databaseUrl) {
+  var dialect = getDialectFromUrl(databaseUrl);
   var sequelize = new Sequelize(databaseUrl, {
-    dialect: "mysql",
+    dialect: dialect,
+    dialectModule: getDialectModule(dialect),
+    dialectOptions: getDialectOptions(dialect),
     logging: false
   });
 } else if (config.use_env_variable && process.env[config.use_env_variable]) {
+  var configDialect = config.dialect || "mysql";
   var sequelize = new Sequelize(process.env[config.use_env_variable], {
-    dialect: config.dialect || "mysql",
+    dialect: configDialect,
+    dialectModule: getDialectModule(configDialect),
+    dialectOptions: getDialectOptions(configDialect),
     logging: false
   });
 } else {

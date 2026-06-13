@@ -14,7 +14,7 @@ This project was originally deployed on Heroku. It is now configured to run on V
 
 Required Vercel environment variables:
 
-* `DATABASE_URL`: Hosted MySQL connection string, for example `mysql://USER:PASSWORD@HOST:3306/DATABASE`.
+* `DATABASE_URL`: Hosted Postgres connection string, for example from the Neon Vercel Marketplace integration.
 * `DB_SYNC`: Optional. Set to `true` only when you intentionally want Sequelize to create missing tables during local startup.
 * `DB_SYNC_ALTER`: Optional. Set to `true` with `DB_SYNC=true` only when you intentionally want Sequelize to alter existing tables.
 
